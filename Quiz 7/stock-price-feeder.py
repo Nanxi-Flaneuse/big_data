@@ -1,29 +1,28 @@
 '''the feeders sends daily prices of Apple and Microsoft into the datastream'''
 
-import twelvedata
-f = open("keys.txt", "r")
-key = f.read()
-my_key = key
-# from keys import twelveDataKey as api_key
-from twelvedata import TDClient
-td = TDClient(apikey = my_key)
+# f = open("keys.txt", "r")
+# key = f.read()
+# my_key = key
+# # from keys import twelveDataKey as api_key
+# from twelvedata import TDClient
+# td = TDClient(apikey = my_key)
 
 import pandas as pd
-import time, datetime, sys
-import os, pathlib
+import time, sys
+import pathlib
 
 # helper function that grabs data from api. Outputs datda as a pandas df
-def get_data(sym, start, end):
-    ts = td.time_series(
-         symbol=sym,
-         interval="1day" ,
-         start_date=start, 
-         end_date=end,
-         type = "Common Stock",
-         outputsize = 5000
+# def get_data(sym, start, end):
+#     ts = td.time_series(
+#          symbol=sym,
+#          interval="1day" ,
+#          start_date=start, 
+#          end_date=end,
+#          type = "Common Stock",
+#          outputsize = 5000
 
-    ).as_pandas()
-    return ts
+#     ).as_pandas()
+#     return ts
 
 # reading data from twelvedata api as dataframes. For some reason the datetime column is ommitted in the df created, and so I had to save that df to a csv first then re-read it as a df.
 # aapl = get_data('AAPL','2020-10-31','2024-10-31').to_csv('aapl.csv',encoding = 'utf-8')
